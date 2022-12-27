@@ -1,0 +1,6 @@
+node_modules
+requests
+.env
+jest.config.js
+tests
+utils/for_testing.js
