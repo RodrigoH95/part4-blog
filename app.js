@@ -7,6 +7,9 @@ const logger = require("./utils/logger");
 
 const app = express();
 
+// To supress deprecation warning in console
+mongoose.set("strictQuery", true);
+
 logger.info("Connecting to", config.MONGODB_URI);
 
 mongoose
