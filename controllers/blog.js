@@ -9,11 +9,11 @@ blogRouter.get("/", async (request, response) => {
 blogRouter.post("/", async (request, response) => {
   const body = request.body;
 
-  // if(!body || !body.title || !body.author || !body.url) {
-  //   return response.status(400).end();
-  // }
+  if(!body || !body.title || !body.author || !body.url) {
+    return response.status(400).end();
+  }
 
-  // if(!body.likes) body.likes = 0;
+  if(!body.likes) body.likes = 0;
 
   const blog = new Blog({
     title: body.title,
