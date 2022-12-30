@@ -48,8 +48,9 @@ blogRouter.get("/:id", async (req, res, next) => {
 blogRouter.put("/:id", async (req, res, next) => {
   try {
     const body = req.body;
-    const userId = req.user;
+    const userId = req.user.id;
     const blogToUpdate = await Blog.findById(req.params.id);
+    
 
     if (!body || !body.title || !body.author || !body.url) {
       return res.status(400).end();
@@ -80,8 +81,11 @@ blogRouter.put("/:id", async (req, res, next) => {
 
 blogRouter.delete("/:id", async (req, res, next) => {
   try {
+
     const userId = req.user.id;
     const blog = await Blog.findById(req.params.id);
+
+
     
     if(!(userId && (blog.user.toString() === userId.toString()))) {
       return res.status(401).json({
